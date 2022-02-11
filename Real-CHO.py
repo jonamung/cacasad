@@ -20,9 +20,6 @@ def get_start_time(ticker):
 def get_balance(ticker):
     """잔고 조회"""
     balance = korbit.get_balances()
-    def get_balance(ticker):
-    """잔고 조회"""
-    balance = korbit.get_balances()
     return float(balance[ticker]['available'])
 
 def get_current_price(ticker):
@@ -37,20 +34,20 @@ print("autotrade start")
 while True:
     try:
         now = datetime.datetime.now()
-        start_time = get_start_time("AMP")
+        start_time = get_start_time("BTC")
         end_time = start_time + datetime.timedelta(days=1)
 
         if start_time < now < end_time - datetime.timedelta(seconds=10):
-            target_price = get_target_price("AMP", 0.2)
-            current_price = get_current_price("AMP")
+            target_price = get_target_price("BTC", 0.1)
+            current_price = get_current_price("BTC")
             if target_price < current_price:
                 krw = get_balance('krw')
                 if krw > 5000:
-                    korbit.buy_market_order("AMP", krw*0.9985)
+                    korbit.buy_market_order("BTC", krw*0.9985)
         else:
             btc = get_balance('btc')
-            if btc > 5000:
-                korbit.sell_market_order("AMP", btc*0.9985)
+            if btc > 0.00009578:
+                korbit.sell_market_order("BTC", btc*0.9985)
         time.sleep(1)
     except Exception as e:
         print(e)
