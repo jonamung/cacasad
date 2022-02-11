@@ -2,8 +2,8 @@ import time
 import pykorbit
 import datetime
 
-key = "J0xtTdCZkYn3OEkQVSw1pHAAUluoFRPeZOGaMJQfg3JrQZ4tAyvAQtnEj5fSU"          
-secret = "3fg0NrS77Ks2yKsPTW4U5fsnJ989UxtH2lmmeEz0zy7GgX5SqNSFcG333yzug"
+key = ""          
+secret = ""
 
 def get_target_price(ticker, k):
     """변동성 돌파 전략으로 매수 목표가 조회"""
