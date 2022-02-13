@@ -32,10 +32,12 @@ print("autotrade start")
 while True:
     try:
         now = datetime.datetime.now()
-        start_time = datetime.datetime(now.year, now.month, now.day) + datetime.timedelta(hours=9)
-        end_time = start_time + datetime.timedelta(1)
+        start_time1 = datetime.datetime(now.year, now.month, now.day) + datetime.timedelta(hours=9)
+        start_time2 = datetime.datetime(now.year, now.month, now.day)
+        end_time1 = datetime.datetime(now.year, now.month, now.day) + datetime.timedelta(1)
+        end_time2 = datetime.datetime(now.year, now.month, now.day) + datetime.timedelta(hours=9) - datetime.timedelta(seconds=10)
 
-        if start_time < now < end_time - datetime.timedelta(seconds=10):
+        if (start_time1 < now < end_time1) or (start_time2 < now < end_time2):
             target_price = get_target_price("BTC", 0.2)
             current_price = get_current_price("BTC")
             if target_price < current_price:
