@@ -38,16 +38,16 @@ while True:
         end_time2 = datetime.datetime(now.year, now.month, now.day) + datetime.timedelta(hours=9) - datetime.timedelta(seconds=10)
 
         if (start_time1 < now < end_time1) or (start_time2 < now < end_time2):
-            target_price = get_target_price("BTC", 0.2)
-            current_price = get_current_price("BTC")
+            target_price = get_target_price("SAND", 0.2)
+            current_price = get_current_price("SAND")
             if target_price < current_price:
                 krw = get_balance('krw')
                 if krw > 5000:
-                    korbit.buy_market_order("BTC", krw*0.9985)
+                    korbit.buy_market_order("SAND", krw*0.9985)
         else:
-            btc = get_balance('btc')
-            if btc > 0.00009578:
-                korbit.sell_market_order("BTC", btc*0.9985)
+            btc = get_balance('sand')
+            if btc > 0.974:
+                korbit.sell_market_order("SAND", btc*0.9985)
         time.sleep(1)
     except Exception as e:
         print(e)
